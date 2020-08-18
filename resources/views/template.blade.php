@@ -18,7 +18,7 @@
             <div id="my-nav" class="collapse navbar-collapse justify-content-end">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('home') }}" style="color:white; font-size:20px;">Главная <span
+                        <a class="nav-link" href="{{ route('homedirect') }}" style="color:white; font-size:20px;">Главная <span
                                 class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
@@ -35,7 +35,7 @@
         </nav> 
     </header>
 
-    @yield('content')
+    @yield('contents')
 
     <footer class="page-footer font-small pt-4">
     <div class="container-fluid text-center text-md-left">

@@ -4,7 +4,7 @@
    Наши контакты
 @endsection
 
-@section('content')
+@section('contents')
       <div class="container">
          <!-- <a class="nav-link" href="/login" style="color:navy; font-size:20px;">Log in</a>
          <a class="nav-link" href="/register" style="color:navy; font-size:20px;">Register</a> -->
@@ -29,18 +29,10 @@
                <textarea name="message" placeholder="Введите сообщение" id="message" class="form-control"></textarea>
             </div>
 
-            @if($errors->any())
-               <div class="alert alert-danger">
-                  <ul>
-                     @foreach($errors->all() as $err)
-                        <li>{{$err}}</li>
-                     @endforeach
-                  </ul>
-            </div>
+            <button type="submit" class="btn-success">Отправить</button><br/><br/>
 
-            @endif
+            @include('messages')
 
-            <button type="submit" class="btn-success">Отправить</button>
             <br/><br/>
             </div>
       </div>
