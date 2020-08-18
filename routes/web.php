@@ -27,28 +27,36 @@ Route::get('/store', function () {
 
 Route::post('/contact/submit', 'ContactController@message')->name('message');
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/log', function () {
-    return view('auth.login');
-});
+// Route::get('/log', function () {
+//     return view('auth.login');
+// });
 
-Route::get('/reg', function () {
-    return view('auth.register');
-});
+// Route::get('/reg', function () {
+//     return view('auth.register');
+// });
 
-Route::post('/register/submit', function () {
-    return view('contact');
-})->name('register');
+// Route::post('/register/submit', function () {
+//     return view('contact');
+// })->name('register');
 
-Route::post('/login/submit', function () {
-    return view('contact');
-})->name('login');
+// Route::post('/login/submit', function () {
+//     return view('contact');
+// })->name('login');
 
 // Route::get('/register', function () {
 //     return view('register');
 // });
 
 // Route::post('login', [ 'as' => 'login', 'uses' => 'LoginController@do']);
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
