@@ -14,8 +14,15 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^2.1"
+        "laravel/ui": "^2.1",
+        "cartalyst/cart": "1.0.*"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://packages.cartalyst.com"
+        }
+    ],
     "require-dev": {
         "facade/ignition": "^2.0",
         "fzaninotto/faker": "^1.9.1",
