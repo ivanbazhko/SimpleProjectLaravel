@@ -9,6 +9,6 @@ use App\Store;
 class StoreController extends Controller
 {
     public function filter(StoreRequest $req) {
-    dd($req->all());
+       $ourname=$req->input('name');
     }
 }

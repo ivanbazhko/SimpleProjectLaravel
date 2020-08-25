@@ -23,8 +23,15 @@ Route::get('/contact', function () {
 
 Route::get('/admin', function () {
     return view('admin');
-})->name('admin');
+})->name('admin')->middleware('auth');
 
+Route::get('/tologin', function () {
+    return view('auth.login');
+})->name('tologin');
+
+Route::get('/toreg', function () {
+    return view('auth.register');
+})->name('toreg');
 
 Route::get('/add', function () {
     return view('add');
