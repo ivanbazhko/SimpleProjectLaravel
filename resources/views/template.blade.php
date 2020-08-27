@@ -11,13 +11,25 @@
 <body>
     <header>
     <nav class="navbar navbar-expand-lg fixed-top">
-            <p style="font-size:30px; color:white" class="shop_title">Get A Plane</p>
+            <i style="font-size:30px; color:navy" class="shop_title">Get a Plane</i>
             <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div id="my-nav" class="collapse navbar-collapse justify-content-end">
                 <ul class="navbar-nav">
+                @if (Auth::user())
+                    <li class="nav-link" class="nav-item active">
+                        <p style="color:yellow; font-size:20px;">Вы вошли в аккаунт <i style="color:red">
+                        {{Auth::user()->name}}</i><span
+                                class="sr-only">(current)</span></p>
+                    </li>
+                    @else
+                    <li class="nav-link" class="nav-item active">
+                        <p style="color:magenta; font-size:20px;">Вы не вошли в аккаунт <span
+                                class="sr-only">(current)</span></p>
+                    </li>
+                @endif
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ route('homedirect') }}" style="color:white; font-size:20px;">Главная <span
                                 class="sr-only">(current)</span></a>
@@ -29,6 +41,17 @@
                         <a class="nav-link" href="{{ route('contact') }}" style="color:white; font-size:20px;">Контакты <span
                                 class="sr-only">(current)</span></a>
                     </li>
+                    @if (Auth::user())
+                    <form action="{{ route('logout') }}" method="post" class="form-success">
+                          @csrf
+                           <button type="submit" class="btn-danger" style="color:white; font-size:20px;">Выйти</button>
+                    </form>
+                    @else
+                    <button class="btn-success">
+                        <a class="nav-link" href="{{ route('tologin') }}" style="color:white; font-size:20px;">Войти<span
+                        class="sr-only">(current)</span></a>
+                    </button>
+                    @endif
                 </ul>
             </div>
         </nav> 

@@ -22,8 +22,6 @@ class ContactController extends Controller
     }
 
     public function receive(){
-        return view('mess', ['data' => Contact::all()]);
-        // $data = Contact::all();
-        // dd($data);
+        return view('admin', ['data' => Contact::all()]);
     }
 }
