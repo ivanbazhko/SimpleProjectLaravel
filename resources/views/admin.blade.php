@@ -64,7 +64,7 @@
 
          <h2>Все сообщения</h2>
          @foreach($data as $th)
-            <div class="alert alert-info col-md-5">
+            <div class="alert col-md-5" style="background-color:rgba(0, 209, 87, 0.3);">
                <h1>{{ $th->subject }}</h1>
                <h4>{{ $th->name }}</h4>
                <h4>{{ $th->email }}</h4>

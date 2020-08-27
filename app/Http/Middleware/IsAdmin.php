@@ -19,6 +19,6 @@ class IsAdmin
         if(Auth::user() && Auth::user()->isAdmin){
         return $next($request);
     }
-    return redirect('home')->with('error', 'У вас нет прав доступа к странице Администратора');
+    return redirect('home')->with('wrong', 'У вас нет прав доступа к странице Администратора');
     }
 }

@@ -33,7 +33,7 @@ Route::post('/contact/submit', 'ContactController@message')->name('message');
 
 Route::get('/', 'HomeController@index')->name('homedirect');
 
-Route::get('/admin', 'HomeController@admin', 'ContactController@receive')->
+Route::get('/admin', 'ContactController@receive')->
 name('admin')->middleware('auth')->middleware('admin');
 
 Route::get('/store', 'PlaneController@receivePlane', function () {
