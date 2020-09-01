@@ -27,7 +27,7 @@ Route::get('/toreg', function () {
 
 Route::post('/admin/submit', 'PlaneController@adding')->name('adding');
 
-Route::post('/store/submit', 'StoreController@filter')->name('filter');
+Route::post('/store/submit', 'PlaneController@filteredPlanes')->name('filter');
 
 Route::post('/contact/submit', 'ContactController@message')->name('message');
 

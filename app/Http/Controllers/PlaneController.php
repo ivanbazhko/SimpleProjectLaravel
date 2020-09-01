@@ -29,4 +29,12 @@ class PlaneController extends Controller
     public function receivePlane(){
         return view('store', ['dataPlanes' => Plane::all()]);
     }
+
+    public function filteredPlanes($req) {
+        $pricefrom = $req->input('pricefrom');
+
+        $planes = Plane::PriceFrom($pricefrom)->ofType();
+
+        return view('store', ['dataPlanes' => Plane::all()]);
+    }
 }
