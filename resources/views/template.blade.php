@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,7 +57,7 @@
         </nav> 
     </header>
 
-    <div class="container" style="min-height:500px;">
+    <div class="container" style="min-height:600px;">
         @yield('contents')
         @yield('z')
     </div>
@@ -78,7 +78,7 @@
     </div>
     </div>
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a>Интернет-магазин</a>
+    <a>Get a Plane shop</a>
     </div>
     </footer>
 </body>

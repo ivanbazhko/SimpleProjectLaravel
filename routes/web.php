@@ -36,7 +36,7 @@ Route::get('/', 'HomeController@index')->name('homedirect');
 Route::get('/admin', 'ContactController@receive')->
 name('admin')->middleware('auth')->middleware('admin');
 
-Route::get('/store', 'PlaneController@receivePlane', function () {
+Route::get('/store', 'PlaneController@filteredPlanes', function () {
     return view('store');
 })->name('store');
 

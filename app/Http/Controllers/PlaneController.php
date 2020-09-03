@@ -25,16 +25,17 @@ class PlaneController extends Controller
         return redirect()->route('admin')->with('success', 'Самолёт добавлен');
 
     }
-
-    public function receivePlane(){
-        return view('store', ['dataPlanes' => Plane::all()]);
-    }
-
-    public function filteredPlanes($req) {
+    
+    public function filteredPlanes(Request $req) {
         $pricefrom = $req->input('pricefrom');
 
-        $planes = Plane::PriceFrom($pricefrom)->ofType();
+        $planes = Plane::all();
 
-        return view('store', ['dataPlanes' => Plane::all()]);
+        if(isset($pricefrom)){
+           $planes = Plane::Pricef($pricefrom)->get();
+        }
+
+
+        return view('store', ['dataPlanes' => $planes]);
     }
 }
