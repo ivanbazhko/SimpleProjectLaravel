@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-   Товары
+    {{ $th->name }}
 @endsection
 
 @section('contents')
