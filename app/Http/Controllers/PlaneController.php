@@ -76,8 +76,8 @@ class PlaneController extends Controller
     }
 
     public function onlyOne($id) {
-        $planes = Plane::where('id', $id);
-        dd($planes);
-        return view('onlyOne', ['th' => $planes]);
+        $plane = Plane::where('id', $id);
+        dd($id);
+        return view('onlyOne', ['th' => $plane]);
     }
 }
