@@ -28,7 +28,7 @@
                   </select>
             </div>
             <div class="form-group">
-               <label for="subject">Картинка</label>
+               <label for="subject">URL картинки</label>
                <input type="text" name="image" placeholder="" id="image" class="form-control">
             </div>
             <div class="form-group">
@@ -51,10 +51,17 @@
                <input type="number" name="range" id="range" class="form-control">
             </div>
             <div class="form-group">
-               <label for="message">Описание</label>
+               <label for="description">Краткое описание</label>
                <textarea name="description" placeholder="" id="description" class="form-control"></textarea>
             </div>
-
+            <div class="form-group">
+               <label for="bigdesc">Описание</label>
+               <textarea name="bigdesc" placeholder="" id="bigdesc" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+               <label for="begin">Год начала производства</label>
+               <input type="begin" name="begin" id="begin" class="form-control">
+            </div>
             <button type="submit" class="btn-success">Отправить</button><br/><br/>
 
             @include('messages')

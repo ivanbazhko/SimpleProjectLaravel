@@ -28,6 +28,8 @@
       </h6>
       <h6>Дальность: {{ $th->range }}км</h6>
       <h6>{{ $th->description }}</h6>
+      <a class="nav-link" href="{{ route('onlyOne', $th->id) }}" style="color:white; font-size:20px; background-color:black; width:150px">Подробнее <span
+                                class="sr-only">(current)</span></a>
    </div>
    <div class="col-md-6">
       <img src="{{ $th->image }}" style="width:300px; height:200px">
@@ -47,6 +49,7 @@
             <div class="form-group">
                <label for="manufacture">Производитель</label>
                   <select name="manufacture" id="manufacture" class="form-control">
+                     <option>Любой</option>
                      <option value="Airbus">Airbus</option>
                      <option value="ATR">ATR</option>
                      <option value="Beechcraft">Beechcraft</option>
@@ -72,17 +75,18 @@
             <label for="capacity">Вместимость (пассажиры)</label>
             <div class="row">
             <div class="form-group col-md-5">
-               <label for="capacityfrom">от</label>
+               <label for="paxfrom">от</label>
                <input type="number" name="paxfrom" id="paxfrom" class="form-control">
             </div>
             <div class="form-group col-md-5">
-               <label for="capacityto">до</label>
+               <label for="paxto">до</label>
                <input type="number" name="paxto" id="paxto" class="form-control">
             </div>
             </div>
             <div class="form-group">
                <label for="fuselage">Фюзеляж</label>
                   <select name="fuselage" id="fuselage" class="form-control">
+                     <option>Любой</option>
                      <option value="narrow">Узкий</option>
                      <option value="wide">Широкий</option>
                   </select>

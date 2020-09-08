@@ -32,6 +32,8 @@ class PlaneRequest extends FormRequest
             'fuselage' => 'required',
             'range' => 'required',
             'description' => 'required',
+            'bigdesc' => 'required',
+            'begin' => 'required',
         ];
     }
 }

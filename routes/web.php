@@ -40,6 +40,8 @@ Route::get('/store', 'PlaneController@filteredPlanes', function () {
     return view('store');
 })->name('store');
 
+Route::get('/store/{id}', 'Planecontroller@onlyOne')->name('onlyOne');
+
 Auth::routes([
     'reset' => false,
     'confirm' => false,

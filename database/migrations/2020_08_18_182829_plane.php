@@ -23,6 +23,8 @@ class Plane extends Migration
             $table->string('fuselage');
             $table->integer('range');
             $table->text('description');
+            $table->text('bigdesc');
+            $table->integer('begin');
             $table->timestamps();
         });
     }
