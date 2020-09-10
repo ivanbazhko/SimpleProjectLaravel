@@ -49,7 +49,7 @@
             <div class="form-group">
                <label for="manufacture">Производитель</label>
                   <select name="manufacture" id="manufacture" class="form-control">
-                     <option>Любой</option>
+                     <option value="any">Любой</option>
                      <option value="Airbus">Airbus</option>
                      <option value="ATR">ATR</option>
                      <option value="Beechcraft">Beechcraft</option>
@@ -86,7 +86,7 @@
             <div class="form-group">
                <label for="fuselage">Фюзеляж</label>
                   <select name="fuselage" id="fuselage" class="form-control">
-                     <option>Любой</option>
+                     <option value="any">Любой</option>
                      <option value="narrow">Узкий</option>
                      <option value="wide">Широкий</option>
                   </select>
@@ -96,11 +96,20 @@
                <input type="number" name="minrange" id="minrange" class="form-control">
             </div>
 
+            <div class="row">
+            <div class="col-md-8">
             <button type="submit" class="btn-success">Применить</button><br/><br/>
+            </div>
+
+            <div class="col-md-4">
+            <input type="reset" value="Сбросить" class="btn-danger"><br/><br/>
+            </div>
 
             <br/><br/>
             </div>
+            </div>
          </form>
+</div>
 </div>
 </div>
 

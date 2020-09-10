@@ -29,55 +29,51 @@ class PlaneController extends Controller
     
     public function filteredPlanes(Request $req) {
 
-        $pricefrom = $req->input('pricefrom');
-        $priceto = $req->input('priceto');
-        $paxfrom = $req->input('paxfrom');
-        $paxto = $req->input('paxto');
-        $name = $req->input('name');
-        $manufacture = $req->input('manufacture');
-        $fuselage = $req->input('fuselage');
-        $minrange = $req->input('minrange');
-
         $planes = Plane::all();
 
-        if(isset($name)){
-            $planes = Plane::Name($name)->get();
+        if($req->has('name')){
+            $planes = Plane::Name($req->input('name'));
          }
          
-        if(isset($manufacture)){
-            $planes = Plane::From($manufacture)->get();
+        if($req->has('manufacture')){
+            if($req->input('manufacture') !== 'any'){
+            $planes = Plane::From($req->input('manufacture'));
+        }
         }
 
-        if(isset($pricefrom)){
-            $planes = Plane::Pricef($pricefrom)->get();
+        if($req->has('pricefrom')){
+            $planes = Plane::Pricef($req->input('pricefrom'));
         }
 
-        if(isset($priceto)){
-            $planes = Plane::Pricet($priceto)->get();
+        if($req->has('priceto')){
+            $planes = Plane::Pricet($req->input('priceto'));
         }
 
-        if(isset($paxfrom)){
-           $planes = Plane::Paxf($paxfrom)->get();
+        if($req->has('paxfrom')){
+           $planes = Plane::Paxf($req->input('paxfrom'));
         }
 
-        if(isset($paxto)){
-            $planes = Plane::Paxt($paxto)->get();
+        if($req->has('paxto')){
+            $planes = Plane::Paxt($req->input('paxto'));
          }
 
-        if(isset($fuselage)){
-            $planes = Plane::Fus($fuselage)->get();
+        if($req->has('fuselage')){
+            if($req->input('fuselage') !== 'any'){
+            $planes = Plane::Fus($req->input('fuselage'));
+        }
         }
 
-        if(isset($minrange)){
-            $planes = Plane::Minr($minrange)->get();
+        if($req->has('minrange')){
+            $planes = Plane::Minr($req->input('minrange'));
         }
+
+        $planes = $planes->get();
 
         return view('store', ['dataPlanes' => $planes]);
     }
 
     public function onlyOne($id) {
-        $plane = Plane::where('id', $id);
-        dd($id);
+        $plane = Plane::where('id', $id)->get();
         return view('onlyOne', ['th' => $plane]);
     }
 }
