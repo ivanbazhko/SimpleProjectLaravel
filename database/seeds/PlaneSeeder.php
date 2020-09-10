@@ -52,19 +52,6 @@ class PlaneSeeder extends Seeder
          ]);
 
          DB::table('planes')->insert([
-            'name' => 'Beechcraft 1900',
-            'manufacture' => 'Beechcraft',
-            'image' => 'https://www.avionslegendaires.net/wp-content/uploads/2016/04/Beechcraft-1900D-FAS_Wikim%C3%A9dia.jpg',
-            'price' => 3000000,
-            'capacity' => 19,
-            'fuselage' => 'narrow',
-            'range' => 1000,
-            'description' => 'Авиалайнер для местных линий',
-            'bigdesc' => 'Beechcraft 1900 — американский турбовинтовой самолёт, 19-местный авиалайнер для местных линий. Разработан на основе самолётов семейства Beechcraft King Air. Серийно производился в 1982—2002, выпущено 695 самолётов в нескольких модификациях. Широко используется как региональный и административный самолёт, существуют пассажирские и грузовые модификации.',
-            'begin' => 1982,
-         ]);
-
-         DB::table('planes')->insert([
             'name' => 'Airbus A380',
             'manufacture' => 'Airbus',
             'image' => 'https://upload.wikimedia.org/wikipedia/commons/e/e5/A380-841_MSN04_19-10-2010.jpg',
