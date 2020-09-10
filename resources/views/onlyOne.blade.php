@@ -29,7 +29,7 @@
       <h6>Год начала производства: {{ $th->begin }}</h6>
    </div>
    <div class="col-md-6">
-      <img src="{{ $th->image }}" style="width:300px; height:200px">
+      <img src="{{ $th->image }}" style="width:500px; height:400px">
    </div>
    </div>
    </div>
