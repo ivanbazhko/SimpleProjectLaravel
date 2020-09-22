@@ -42,6 +42,8 @@ Route::get('/store', 'PlaneController@filteredPlanes', function () {
 
 Route::get('/store/{id}', 'Planecontroller@onlyOne')->name('onlyOne');
 
+Route::get('/store/{id}', 'Planecontroller@update')->name('update');
+
 Auth::routes([
     'reset' => false,
     'confirm' => false,

@@ -28,7 +28,7 @@
       </h6>
       <h6>Дальность: {{ $th->range }}км</h6>
       <h6>{{ $th->description }}</h6>
-      <a class="nav-link" href="{{ route('onlyOne', $th->id) }}" style="color:white; font-size:20px; background-color:black; width:150px">Подробнее <span
+      <a class="nav-link" href="{{ url('onlyOne', $th->id) }}" style="color:white; font-size:20px; background-color:black; width:150px">Подробнее <span
                                 class="sr-only">(current)</span></a>
    </div>
    <div class="col-md-6">

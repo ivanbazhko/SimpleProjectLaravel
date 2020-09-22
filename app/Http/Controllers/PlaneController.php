@@ -87,4 +87,9 @@ class PlaneController extends Controller
         $plane = Plane::findOrFail($id);
         return view('onlyOne', ['th' => $plane]);
     }
+
+    public function update($id) {
+        $plane = Plane::findOrFail($id);
+        return view('update', ['th' => $plane]);
+    }
 }

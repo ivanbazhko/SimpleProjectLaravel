@@ -32,6 +32,9 @@
       <img src="{{ $th->image }}" style="width:500px; height:400px">
    </div>
    </div>
+   @if (Auth::user() & Auth::user()->isAdmin==true)
+   <a href="{{route('update', $data->id)}}"><button class="btn btn-primary">Изменить</button></a>
+   @endif
    </div>
 </div>
 @endsection
