@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Plane extends Model
 {
    public function scopeName($query, $name){
-      return $query->where('name', $name);
+      return $query->where('name', 'like', '%'.$name.'%');
    }
 
    public function scopeFrom($query, $manufacture){
@@ -31,11 +31,11 @@ class Plane extends Model
       return $query->where('capacity', '<=', $paxto);
    }
 
-   public function scopeMinr($query, $fuselage){
+   public function scopeFus($query, $fuselage){
       return $query->where('fuselage', $fuselage);
    }
 
-   public function scopeFus($query, $minrange){
+   public function scopeMinr($query, $minrange){
       return $query->where('range', '<=', $minrange);
    }
 }
