@@ -40,9 +40,11 @@ Route::get('/store', 'PlaneController@filteredPlanes', function () {
     return view('store');
 })->name('store');
 
-Route::get('/store/{id}', 'Planecontroller@onlyOne')->name('onlyOne');
+Route::get('/onlyOne/{id}', 'PlaneController@onlyOne')->name('onlyOne');
 
-Route::get('/store/{id}', 'Planecontroller@update')->name('update');
+Route::get('/update/{id}', 'PlaneController@update')->name('update');
+
+Route::get('/delete/{id}', 'PlaneController@planeDelete')->name('plane-delete');
 
 Auth::routes([
     'reset' => false,
@@ -51,3 +53,5 @@ Auth::routes([
 ]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/update/{id}', 'PlaneController@updateAPlane')->name('updateplane');

@@ -32,9 +32,11 @@
       <img src="{{ $th->image }}" style="width:500px; height:400px">
    </div>
    </div>
-   @if (Auth::user() & Auth::user()->isAdmin==true)
-   <a href="{{route('update', $data->id)}}"><button class="btn btn-primary">Изменить</button></a>
+   @if (Auth::user() && Auth::user()->isAdmin)
+   <a href="{{route('update', $th->id)}}"><button class="btn btn-primary">Изменить</button></a>
+   <a href="{{route('plane-delete', $th->id)}}"><button class="btn btn-danger">Удалить</button></a>
    @endif
+   @include('messages')
    </div>
 </div>
 @endsection

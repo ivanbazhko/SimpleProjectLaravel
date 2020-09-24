@@ -4,7 +4,7 @@
 
 <h2>Изменить самолёт</h2>
          <div class="col-md-6">
-         <form action="{{ route('adding') }}" method="post" class="form-success">
+         <form action="{{ route('updateplane', $th->id) }}" method="post" class="form-success">
            @csrf
             <div class="form-group">
                <label for="name">Название</label>
