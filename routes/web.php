@@ -42,9 +42,11 @@ Route::get('/store', 'PlaneController@filteredPlanes', function () {
 
 Route::get('/onlyOne/{id}', 'PlaneController@onlyOne')->name('onlyOne');
 
-Route::get('/update/{id}', 'PlaneController@update')->name('update');
+Route::get('/oneMess/{id}', 'ContactController@oneMess')->name('oneMess')->middleware('admin');
 
-Route::get('/delete/{id}', 'PlaneController@planeDelete')->name('plane-delete');
+Route::get('/update/{id}', 'PlaneController@update')->name('update')->middleware('admin');
+
+Route::get('/delete/{id}', 'PlaneController@planeDelete')->name('plane-delete')->middleware('admin');
 
 Auth::routes([
     'reset' => false,
@@ -54,4 +56,10 @@ Auth::routes([
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/update/{id}', 'PlaneController@updateAPlane')->name('updateplane');
+Route::post('/update/{id}', 'PlaneController@updateAPlane')->name('updateplane')->middleware('admin');
+
+Route::get('/cartAndBuy', function () {
+    return view('cartAndBuy');
+})->name('cartAndBuy');
+
+Route::get('/delete/{id}', 'ContactController@messageDelete')->name('message-delete');

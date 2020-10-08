@@ -34,7 +34,7 @@
    </div>
    @if (Auth::user() && Auth::user()->isAdmin)
    <a href="{{route('update', $th->id)}}"><button class="btn btn-primary">Изменить</button></a>
-   <a href="{{route('plane-delete', $th->id)}}"><button class="btn btn-danger">Удалить</button></a>
+   <a href="{{route('plane-delete', $th->id)}}" onclick="return confirm('Вы точно хотите удалить самолёт {{ $th->name }}?')"><button class="btn btn-danger">Удалить</button></a>
    @endif
    @include('messages')
    </div>

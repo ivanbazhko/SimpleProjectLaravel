@@ -29,55 +29,57 @@ class PlaneController extends Controller
     
     public function filteredPlanes(Request $req) {
 
-        $planes = Plane::all();
+        $planes = Plane::query();
 
         $having = false;
         if($req->filled('name')){
             $having = true;
-            $planes = Plane::Name($req->input('name'));
+            $planes = $planes->Name($req->input('name'));
          }
          
         if($req->filled('manufacture')){
             if($req->input('manufacture') != 'any'){
             $having = true;
-            $planes = Plane::From($req->input('manufacture'));
+            $planes = $planes->From($req->input('manufacture'));
         }
         }
 
         if($req->filled('pricefrom')){
             $having = true;
-            $planes = Plane::Pricef($req->input('pricefrom'));
+            $planes = $planes->Pricef($req->input('pricefrom'));
         }
 
         if($req->filled('priceto')){
             $having = true;
-            $planes = Plane::Pricet($req->input('priceto'));
+            $planes = $planes->Pricet($req->input('priceto'));
         }
 
         if($req->filled('paxfrom')){
             $having = true;
-            $planes = Plane::Paxf($req->input('paxfrom'));
+            $planes = $planes->Paxf($req->input('paxfrom'));
         }
 
         if($req->filled('paxto')){
             $having = true;
-            $planes = Plane::Paxt($req->input('paxto'));
+            $planes = $planes->Paxt($req->input('paxto'));
          }
 
         if($req->filled('fuselage')){
             if($req->input('fuselage') != 'any'){
             $having = true;
-            $planes = Plane::Fus($req->input('fuselage'));
+            $planes = $planes->Fus($req->input('fuselage'));
         }
         }
 
         if($req->filled('minrange')){
             $having = true;
-            $planes = Plane::Minr($req->input('minrange'));
+            $planes = $planes->Minr($req->input('minrange'));
         }
 
         if($having){
         $planes = $planes->get();
+        } else{
+        $planes = Plane::all();
         }
 
         return view('store', ['dataPlanes' => $planes]);

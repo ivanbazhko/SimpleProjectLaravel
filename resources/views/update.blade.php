@@ -12,16 +12,16 @@
             </div>
             <div class="form-group">
                <label for="manufacture">Производитель</label>
-                  <select name="manufacture" value="{{$th->manufacture}}" id="manufacture" class="form-control">
-                     <option value="Airbus">Airbus</option>
-                     <option value="ATR">ATR</option>
-                     <option value="Beechcraft">Beechcraft</option>
-                     <option value="Boeing">Boeing</option>
-                     <option value="Bombardier">Bombardier</option>
-                     <option value="Cessna">Cessna</option>
-                     <option value="Embraer">Embraer</option>
-                     <option value="Pilatus">Pilatus</option>
-                     <option value="Sukhoi">Sukhoi</option>
+                  <select name="manufacture" id="manufacture" class="form-control">
+                     <option value="Airbus" {{ $th->manufacture == 'Airbus' ? 'selected' : '' }}>Airbus</option>
+                     <option value="ATR" {{ $th->manufacture == 'ATR' ? 'selected' : '' }}>ATR</option>
+                     <option value="Beechcraft" {{ $th->manufacture == 'Beechcraft' ? 'selected' : '' }}>Beechcraft</option>
+                     <option value="Boeing" {{ $th->manufacture == 'Boeing' ? 'selected' : '' }}>Boeing</option>
+                     <option value="Bombardier" {{ $th->manufacture == 'Bombardier' ? 'selected' : '' }}>Bombardier</option>
+                     <option value="Cessna" {{ $th->manufacture == 'Cessna' ? 'selected' : '' }}>Cessna</option>
+                     <option value="Embraer" {{ $th->manufacture == 'Embraer' ? 'selected' : '' }}>Embraer</option>
+                     <option value="Pilatus" {{ $th->manufacture == 'Pilatus' ? 'selected' : '' }}>Pilatus</option>
+                     <option value="Sukhoi" {{ $th->manufacture == 'Sukhoi' ? 'selected' : '' }}>Sukhoi</option>
                   </select>
             </div>
             <div class="form-group">
@@ -38,9 +38,9 @@
             </div>
             <div class="form-group">
                <label for="fuselage">Фюзеляж</label>
-                  <select name="fuselage" value="{{$th->fuselage}}" id="fuselage" class="form-control">
-                     <option value="narrow">Узкий</option>
-                     <option value="wide">Широкий</option>
+                  <select name="fuselage" id="fuselage" class="form-control">
+                     <option value="narrow" {{ $th->fuselage == 'narrow' ? 'selected' : '' }}>Узкий</option>
+                     <option value="wide" {{ $th->fuselage == 'wide' ? 'selected' : '' }}>Широкий</option>
                   </select>
             </div>
             <div class="form-group">

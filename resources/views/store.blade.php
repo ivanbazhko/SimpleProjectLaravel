@@ -11,10 +11,17 @@
 @section('contents')
 <div class="row">
 <div class="col-md-8">
+@include('messages')
+<?php
+$is = 0;
+?>
 @foreach($dataPlanes as $th)
    <div class="alert product">
    <div class="row">
    <div class="col-md-6">
+      <?php
+      $is = 1;
+      ?>
       <h1>{{ $th->name }}</h1>
       <h6>{{ $th->manufacture }}</h6>
       <h6>{{ $th->price }}$</h6>
@@ -37,8 +44,13 @@
    </div>
    </div>
 @endforeach
+@if($is == 0)
+<h3>Ничего не найдено</h3>
+@endif
 </div>
-<div class="col-md-4 filter" style="height:670px;">
+<div class="col-md-4" style="height:700px;">
+<a href="{{ route('cartAndBuy') }}" style="color:white; font-size:20px; background:red">Корзина и оформление покупки</a>
+<div class="filter">
    <h4>Добавить фильтры</h4>
    <form action="{{ route('filter') }}" method="post" class="form-success">
            @csrf
@@ -112,5 +124,4 @@
 </div>
 </div>
 </div>
-
 @endsection

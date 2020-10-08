@@ -36,7 +36,7 @@ class Plane extends Model
    }
 
    public function scopeMinr($query, $minrange){
-      return $query->where('range', '<=', $minrange);
+      return $query->where('range', '>=', $minrange);
    }
 }
 

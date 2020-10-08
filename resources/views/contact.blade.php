@@ -6,6 +6,7 @@
 
 @section('contents')
       <div class="container">
+      @include('messages')
          <!-- <a class="nav-link" href="/login" style="color:navy; font-size:20px;">Log in</a>
          <a class="nav-link" href="/register" style="color:navy; font-size:20px;">Register</a> -->
          <div class="col-md-6">
@@ -30,8 +31,6 @@
             </div>
 
             <button type="submit" class="btn-success">Отправить</button><br/><br/>
-
-            @include('messages')
 
             <br/><br/>
             </div>

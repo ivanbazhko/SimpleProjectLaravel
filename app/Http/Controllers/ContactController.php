@@ -24,4 +24,14 @@ class ContactController extends Controller
     public function receive(){
         return view('admin', ['data' => Contact::all()]);
     }
+
+    public function messageDelete($id){
+        Contact::findOrFail($id)->delete();
+        return redirect()->route('admin')->with('success', 'Сообщение удалено');
+    }
+
+    public function oneMess($id) {
+        $message = Contact::findOrFail($id);
+        return view('oneMess', ['th' => $message]);
+    }
 }

@@ -5,6 +5,7 @@
 @section('contents')
     
 <div class="container">
+@include('messages')
      <h2>Добавить самолёт</h2>
          <div class="col-md-6">
          <form action="{{ route('adding') }}" method="post" class="form-success">
@@ -64,8 +65,6 @@
             </div>
             <button type="submit" class="btn-success">Отправить</button><br/><br/>
 
-            @include('messages')
-
             <br/><br/>
          </div>
 
@@ -74,9 +73,8 @@
             <div class="alert col-md-5" style="background-color:rgba(0, 209, 87, 0.3);">
                <h1>{{ $th->subject }}</h1>
                <h4>{{ $th->name }}</h4>
-               <h4>{{ $th->email }}</h4>
-               <p>{{ $th->message }}</p>
-               <p>{{ $th->created_at }}</p>
+               <a class="nav-link" href="{{ url('oneMess', $th->id) }}" style="color:white; font-size:20px; background-color:black; width:150px">Подробнее<span
+                                class="sr-only">(current)</span></a>
             </div>
          @endforeach
       
