@@ -1,5 +1,9 @@
 @extends('template')
 
+@section('title')
+   Главная
+@endsection
+
 @section('contents')
 <br/>
 <div class="row">
