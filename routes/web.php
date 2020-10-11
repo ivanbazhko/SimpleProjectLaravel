@@ -46,7 +46,7 @@ Route::get('/oneMess/{id}', 'ContactController@oneMess')->name('oneMess')->middl
 
 Route::get('/update/{id}', 'PlaneController@update')->name('update')->middleware('admin');
 
-Route::get('/delete/{id}', 'PlaneController@planeDelete')->name('plane-delete')->middleware('admin');
+Route::get('/deleting/{id}', 'PlaneController@planeDelete')->name('plane-delete')->middleware('admin');
 
 Auth::routes([
     'reset' => false,

@@ -120,7 +120,13 @@ class PlaneController extends Controller
     }
 
     public function cartTest(){
-        Cart::add('293ad', 'Product 1', 1, 9.99);
+        $row = ShoppingCart::add(
+            1,
+            '787',
+            1,
+            200000000,
+            []
+        );
         return view('cartAndBuy');
     }
 }
