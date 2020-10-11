@@ -77,9 +77,9 @@ class PlaneController extends Controller
         }
 
         if($having){
-        $planes = $planes->get();
+        $planes = $planes->paginate(2);
         } else{
-        $planes = Plane::all();
+        $planes = Plane::paginate(2);
         }
 
         return view('store', ['dataPlanes' => $planes]);
@@ -117,5 +117,10 @@ class PlaneController extends Controller
     public function planeDelete($id){
         Plane::findOrFail($id)->delete();
         return redirect()->route('store', $id)->with('success', 'Самолёт удалён');
+    }
+
+    public function cartTest(){
+        Cart::add('293ad', 'Product 1', 1, 9.99);
+        return view('cartAndBuy');
     }
 }

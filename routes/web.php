@@ -63,3 +63,5 @@ Route::get('/cartAndBuy', function () {
 })->name('cartAndBuy');
 
 Route::get('/delete/{id}', 'ContactController@messageDelete')->name('message-delete');
+
+Route::get('/cartAndBuy', 'PlaneController@cartTest')->name('cartTest');

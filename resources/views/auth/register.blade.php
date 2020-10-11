@@ -1,5 +1,9 @@
 @extends('home')
 
+@section('title')
+    Регистрация
+@endsection
+
 @section('forauth')
 <div class="container">
     <div class="row justify-content-center">

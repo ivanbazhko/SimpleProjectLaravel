@@ -44,12 +44,13 @@ $is = 0;
    </div>
    </div>
 @endforeach
+{{ $dataPlanes->links() }}
 @if($is == 0)
 <h3>Ничего не найдено</h3>
 @endif
 </div>
 <div class="col-md-4" style="height:700px;">
-<a href="{{ route('cartAndBuy') }}" style="color:white; font-size:20px; background:red">Корзина и оформление покупки</a>
+<a href="{{ route('cartTest') }}" style="color:white; font-size:20px; background:red">Корзина и оформление покупки</a>
 <div class="filter">
    <h4>Добавить фильтры</h4>
    <form action="{{ route('filter') }}" method="post" class="form-success">
@@ -114,7 +115,9 @@ $is = 0;
             </div>
 
             <div class="col-md-4">
-            <input type="reset" value="Сбросить" class="btn-danger"><br/><br/>
+            <button type="submit">
+            <input type="reset" value="Сбросить" class="btn-danger">
+            </button><br/><br/>
             </div>
 
             <br/><br/>
