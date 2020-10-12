@@ -8,7 +8,12 @@
     {{ $th->name }}
 @endsection
 
+<?php
+$id = $th->id;
+?>
+
 @section('contents')
+@include('messages')
 <div class="row">
    <div class="alert product">
    <div class="row">
@@ -36,7 +41,17 @@
    <a href="{{route('update', $th->id)}}"><button class="btn btn-primary">Изменить</button></a>
    <a href="{{route('plane-delete', $th->id)}}" onclick="return confirm('Вы точно хотите удалить самолёт {{ $th->name }}?')"><button class="btn btn-danger">Удалить</button></a>
    @endif
-   @include('messages')
+   <form action="{{ route('toCart') }}" method="post" class="form-success">
+           @csrf
+            <div class="form-group col-md-5">
+               <label for="amount">Количество</label>
+               <input type="number" name="amount" id="amount" class="form-control">
+               <input style="display:none;" name="id" id="id" value="{{$id}}" class="form-control">
+            </div>
+            <button type="submit" class="btn-success">Добавить в корзину</button>
+            <input type="reset" value="Сбросить" class="btn-danger">
+            </button>
+   </form>
    </div>
 </div>
 @endsection

@@ -227,7 +227,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'ShoppingCart'      => Overtrue\LaravelShoppingCart\Facade::class,
+        'ShoppingCart' => Overtrue\LaravelShoppingCart\Facade::class,
     ],
 
 ];

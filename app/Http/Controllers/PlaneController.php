@@ -77,9 +77,9 @@ class PlaneController extends Controller
         }
 
         if($having){
-        $planes = $planes->paginate(2);
+        $planes = $planes->paginate(5);
         } else{
-        $planes = Plane::paginate(2);
+        $planes = Plane::paginate(5);
         }
 
         return view('store', ['dataPlanes' => $planes]);
@@ -114,19 +114,45 @@ class PlaneController extends Controller
 
     }
 
+    public function toCart(Request $req){
+        $amount = $req->input('amount');
+        $id = $req->input('id');
+        if($amount > 0){
+        $planeAdd = Plane::findOrFail($id);
+        $row = \ShoppingCart::add($planeAdd->id, $planeAdd->name, $amount, $planeAdd->price, []);
+        return redirect()->route('store')->with('success', 'Cамолёт добавлен в корзину');
+    } else{
+        return redirect()->route('store')->with('wrong', 'Выберите положительное количество самолётов');
+    }
+    }
+
     public function planeDelete($id){
         Plane::findOrFail($id)->delete();
         return redirect()->route('store', $id)->with('success', 'Самолёт удалён');
     }
 
-    public function cartTest(){
-        $row = ShoppingCart::add(
-            1,
-            '787',
-            1,
-            200000000,
-            []
-        );
-        return view('cartAndBuy');
+    public function cartAndBuy(){
+        $items = \ShoppingCart::all();
+        return view('cartAndBuy', ['items' => $items]);
+    }
+
+    public function updateCartItem(Request $req){
+        $amount = $req->input('amount');
+        $id = $req->input('id');
+        \ShoppingCart::update($id, $amount);
+        $items = \ShoppingCart::all();
+        return view('cartAndBuy', ['items' => $items])->with('success', 'Заказ изменён');
+    }
+
+    public function deleteCartItem(Request $req){
+        $id = $req->input('id');
+        \ShoppingCart::remove($id);
+        $items = \ShoppingCart::all();
+        return view('cartAndBuy', ['items' => $items])->with('success', 'Заказ изменён');
+    }
+
+    public function clearCart(Request $req){
+        \ShoppingCart::clean();
+        return view('home')->with('success', 'Корзина очищена');
     }
 }

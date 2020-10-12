@@ -56,12 +56,18 @@ Auth::routes([
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/update/{id}', 'PlaneController@updateAPlane')->name('updateplane')->middleware('admin');
+Route::get('/cartAndBuy', 'PlaneController@cartAndBuy')->name('cartAndBuy');
 
-Route::get('/cartAndBuy', function () {
-    return view('cartAndBuy');
-})->name('cartAndBuy');
+Route::post('/update/{id}', 'PlaneController@updateAPlane')->name('updateplane')->middleware('admin');
 
 Route::get('/delete/{id}', 'ContactController@messageDelete')->name('message-delete');
 
-Route::get('/cartAndBuy', 'PlaneController@cartTest')->name('cartTest');
+Route::post('/onlyOne/submit', 'PlaneController@toCart')->name('toCart');
+
+Route::post('/cartAndBuy/submit', 'PlaneController@updateCartItem')->name('updateCartItem');
+
+Route::post('/del/submit', 'PlaneController@deleteCartItem')->name('deleteCartItem');
+
+Route::post('/clca/submit', 'PlaneController@clearCart')->name('clearCart');
+
+Route::post('/cart/submit', 'OrderController@show')->name('addAnOrder');
