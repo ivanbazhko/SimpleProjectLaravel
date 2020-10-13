@@ -59,6 +59,9 @@ $count=1;
             </div>
             </div>   
          @endforeach
+         @if($count == 1)
+         <h1>пуст</h1>
+         @endif
       </div>
 </div>
 @endsection
