@@ -47,7 +47,7 @@
                            <button type="submit" class="btn-danger" style="color:white; font-size:20px;">Выйти</button>
                     </form>
                     @else
-                    <button class="btn-success">
+                    <button class="btn-success" style="height:40px">
                         <a class="nav-link" href="{{ route('tologin') }}" style="color:white; font-size:20px;">Войти<span
                         class="sr-only">(current)</span></a>
                     </button>
@@ -74,6 +74,10 @@
       <div class="col-md-3 mb-md-0 mb-3">
        <a class="nav-link" href="{{ route('admin') }}" style="color:black; font-size:20px;">Админ <span
                                 class="sr-only">(current)</span></a>
+        @if (Auth::user() && Auth::user()->isAdmin)                       
+        <a class="nav-link" href="{{ route('adminOrder') }}" style="color:black; font-size:20px;">Список всех заказов <span
+                                class="sr-only">(current)</span></a> 
+        @endif                                                                            
       </div>
     </div>
     </div>

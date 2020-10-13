@@ -36,4 +36,18 @@ class PlaneRequest extends FormRequest
             'begin' => 'required',
         ];
     }
+
+    public function messages(){
+        return[
+            'name.required' => 'Введите название самолёта',
+            'manufacture.required' => 'Введите производителя',
+            'image.required' => 'Укажите URL изображения',
+            'price.required' => 'Введите цену',
+            'capacity.required' => 'Введите вместимость',
+            'fuselage.required' => 'Введите размер фюзеляжа',
+            'range.required' => 'Введите дальность полёта',
+            'description.required' => 'Введите краткое описание',
+            'bigdesc.required' => 'Введите описание',
+            'begin.required' => 'Введите дату начала производства',
+        ];}
 }

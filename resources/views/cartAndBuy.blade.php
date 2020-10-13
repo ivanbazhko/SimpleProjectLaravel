@@ -28,7 +28,6 @@ $a .= $th->qty;
 $a .= '; ';
 ?>
    <div class="alert product">
-   @include('messages')
       <h3>{{ $th->name }} x {{ $th->qty }}</h1>
       <h6>{{ $price }}$</h6>
    </div>
@@ -65,34 +64,38 @@ $a = rtrim($a, ';');
             </button>
 </form>
 </div>
+@if ($smth!==0)
+@if (Auth::user())
 <div class="col-md-6">
+@include('messages')
 <form action="{{ route('addAnOrder') }}" method="post">
 @csrf
-  <input style="display:none;" name="total" id="total" value="{{$a}}" class="form-control">
+  <input style="display:none;" name="items" id="items" value="{{$a}}" class="form-control">
+  <input style="display:none;" name="price" id="price" value="{{$total}}" class="form-control">
   <div class="form-group">
     <label for="customer">ФИО</label>
-    <input type="text" class="form-control" id="customer" placeholder="Иванов Иван Иванович">
+    <input readonly type="text" class="form-control" value="{{Auth::user()->name}}" name="customer" id="customer" placeholder="Иванов Иван Иванович">
   </div>
   <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" placeholder="Email@email.com">
+      <input readonly type="email" class="form-control" value="{{Auth::user()->email}}" name="email" id="email" placeholder="Email@email.com">
    </div>
   <div class="form-group">
     <label for="adress">Адрес</label>
-    <input type="text" class="form-control" id="adress" placeholder="Улица Московская, дом 000, квартира 000">
+    <input type="text" class="form-control" name="adress" id="adress" placeholder="Улица Московская, дом 000, квартира 000">
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="city">Город</label>
-      <input type="text" class="form-control" id="city">
+      <input type="text" class="form-control" name="city" id="city">
     </div>
     <div class="form-group col-md-6">
       <label for="country">Страна</label>
-      <input type="text" class="form-control" id="country">
+      <input type="text" class="form-control" name="country" id="country">
     </div>
     <div class="form-group">
       <label for="airport">Желаемый аэропорт доставки</label>
-      <input type="text" class="form-control" id="airport">
+      <input type="text" class="form-control" name="airport" id="airport">
     </div>
     <div class="form-group">
       <label for="airport" style="color:orangered; background:black; margin:30px; padding:10px">СТОИМОСТЬ: {{ $total }}$</label>
@@ -101,5 +104,9 @@ $a = rtrim($a, ';');
   <button type="submit" class="btn btn-success">Отправить заказ</button>
 </form>
 </div>
+@else
+<h2 style="color:navy">Пожалуйста, войдите в аккаунт или авторизируйтесь чтобы сделать заказ</h2>
+@endif
+@endif
 </div>
 @endsection

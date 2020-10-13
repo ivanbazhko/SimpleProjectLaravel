@@ -52,6 +52,83 @@ $id = $th->id;
             <input type="reset" value="Сбросить" class="btn-danger">
             </button>
    </form>
+   @if (Auth::user())
+   <div class="col-md-6">
+   <form action="{{ route('comment') }}" method="post" class="form-success">
+           @csrf
+            <input style="display:none;" name="planeId" id="planeId" value="{{$id}}" class="form-control">
+            <input style="display:none;" name="userName" id="userName" value="{{Auth::user()->name}}" class="form-control">
+            <div class="form-group">
+               <label for="rate">Оцените этот самолёт</label>
+                  <select name="rate" id="rate" class="form-control">
+                     <option value="1">1</option>
+                     <option value="2">2</option>
+                     <option value="3">3</option>
+                     <option value="4">4</option>
+                     <option value="5">5</option>
+                  </select>
+            </div>
+            <div class="form-group">
+               <label for="text">Комментарий</label>
+               <textarea name="text" id="text" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn-success">Опубликовать</button>
+            <input type="reset" value="Сбросить" class="btn-danger">
+            </button>
+   </form>
+   </div>
+   @else
+   <h3>Зарегистрируйтесь или войдите в аккаунт чтобы написать комментарий</h3>
+   @endif
+   <?php
+      $number=0;
+      $ratecount=0;
+   ?>
+   <h2 style="color:blue; margin:10px;">Комментарии</h2>
+   <div class="row">
+   <div class="col-md-5">
+   @foreach($com as $th)
+         <div class="col-md-10">
+            <div class="col" style="background:ghostwhite; margin:10px;">
+            <?php
+            $number=$number+1;
+            ?>
+               <h3 style="color:blue">{{ $number }}. Автор: {{ $th->userName }} </h3>
+               <h6>Оценка: {{ $th->rate }}</h6>
+               <h6>{{ $th->text }}</h6>
+               @if (Auth::user() && Auth::user()->isAdmin)
+            <form action="{{ route('deleteComment') }}" method="post" class="form-success">
+            @csrf
+            <input style="display:none;" name="id" id="id" value="{{$th->planeId}}" class="form-control">
+            <button type="submit" class="btn-danger" onclick="return confirm('Вы точно хотите удалить комментарий?')">Удалить</button>
+            </button>
+            </form>
+               @endif
+         </div>
+         <?php
+            $ratecount=$ratecount + $th->rate;
+         ?>
+         </div>         
+         @endforeach
+         @if($number !== 0)
+         <?php
+            $ratecount=round($ratecount/$number);
+            $left=5-$ratecount;
+         ?>
+   </div>
+   <div class="col-md-4">
+   <h2>Средняя оценка:</h2>
+   @for($j=0; $j<$ratecount; $j++)
+   <img src="https://img.pngio.com/gold-star-png-image-purepng-free-transparent-cc0-png-image-library-yellow-star-png-no-background-1100_1100.png" style="width:50px; height:50px;">
+   @endfor
+   @for($x=0; $x<$left; $x++)
+   <img src="https://www.freeiconspng.com/uploads/star-army-icon-11.png" style="width:50px; height:42px;">
+   @endfor
+   @else
+   <h2>У этого самолёта ещё нет комментариев</h2>
+   @endif
+   </div>
+   </div>
    </div>
 </div>
 @endsection

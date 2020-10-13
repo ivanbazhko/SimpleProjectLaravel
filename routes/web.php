@@ -27,7 +27,7 @@ Route::get('/toreg', function () {
 
 Route::post('/admin/submit', 'PlaneController@adding')->name('adding');
 
-Route::post('/store/submit', 'PlaneController@filteredPlanes')->name('filter');
+Route::post('/filter/submit', 'PlaneController@filteredPlanes')->name('filter');
 
 Route::post('/contact/submit', 'ContactController@message')->name('message');
 
@@ -70,4 +70,18 @@ Route::post('/del/submit', 'PlaneController@deleteCartItem')->name('deleteCartIt
 
 Route::post('/clca/submit', 'PlaneController@clearCart')->name('clearCart');
 
-Route::post('/cart/submit', 'OrderController@show')->name('addAnOrder');
+Route::post('/cart/submit', 'OrderController@addAnOrder')->name('addAnOrder');
+
+Route::get('/ordersAdmin', 'OrderController@getAllOrders')->
+name('adminOrder')->middleware('auth')->middleware('admin');
+
+Route::post('/ordersUser/submit', 'OrderController@userOrders')->
+name('userOrder')->middleware('auth');
+
+Route::post('/deleteOrder/submit', 'OrderController@deleteOrder')->name('deleteOrder');
+
+Route::post('/updateAnOrder/submit', 'OrderController@updateAnOrder')->name('updateAnOrder');
+
+Route::post('/comment/submit', 'CommentController@comment')->name('comment');
+
+Route::post('/deleteComment/submit', 'CommentController@deleteComment')->name('deleteComment');

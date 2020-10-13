@@ -49,7 +49,7 @@ $is = 0;
 <h3>Ничего не найдено</h3>
 @endif
 </div>
-<div class="col-md-4" style="height:700px;">
+<div class="col-md-4" style="height:750px;">
 <a href="{{ route('cartAndBuy') }}" style="color:white; font-size:20px; background:red">Корзина и оформление покупки</a>
 <div class="filter">
    <h4>Добавить фильтры</h4>
@@ -57,56 +57,56 @@ $is = 0;
            @csrf
            <div class="form-group">
                <label for="name">Название</label>
-               <input type="text" name="name" id="name" class="form-control">
+               <input type="text" value="{{$res->name}}" name="name" id="name" class="form-control">
             </div>
             <div class="form-group">
                <label for="manufacture">Производитель</label>
                   <select name="manufacture" id="manufacture" class="form-control">
                      <option value="any">Любой</option>
-                     <option value="Airbus">Airbus</option>
-                     <option value="ATR">ATR</option>
-                     <option value="Beechcraft">Beechcraft</option>
-                     <option value="Boeing">Boeing</option>
-                     <option value="Bombardier">Bombardier</option>
-                     <option value="Cessna">Cessna</option>
-                     <option value="Embraer">Embraer</option>
-                     <option value="Pilatus">Pilatus</option>
-                     <option value="Sukhoi">Sukhoi</option>
+                     <option value="Airbus" {{ $res->manufacture == 'Airbus' ? 'selected' : '' }}>Airbus</option>
+                     <option value="ATR" {{ $res->manufacture == 'ATR' ? 'selected' : '' }}>ATR</option>
+                     <option value="Beechcraft" {{ $res->manufacture == 'Beechcraft' ? 'selected' : '' }}>Beechcraft</option>
+                     <option value="Boeing" {{ $res->manufacture == 'Boeing' ? 'selected' : '' }}>Boeing</option>
+                     <option value="Bombardier" {{ $res->manufacture == 'Bombardier' ? 'selected' : '' }}>Bombardier</option>
+                     <option value="Cessna" {{ $res->manufacture == 'Cessna' ? 'selected' : '' }}>Cessna</option>
+                     <option value="Embraer" {{ $res->manufacture == 'Embraer' ? 'selected' : '' }}>Embraer</option>
+                     <option value="Pilatus" {{ $res->manufacture == 'Pilatus' ? 'selected' : '' }}>Pilatus</option>
+                     <option value="Sukhoi" {{ $res->manufacture == 'Sukhoi' ? 'selected' : '' }}>Sukhoi</option>
                   </select>
             </div>
             <label for="price">Цена</label>
             <div class="row">
             <div class="form-group col-md-5">
                <label for="pricefrom">от</label>
-               <input type="number" name="pricefrom" id="pricefrom" class="form-control">
+               <input type="number" value="{{$res->pricefrom}}" name="pricefrom" id="pricefrom" class="form-control">
             </div>
             <div class="form-group col-md-5">
                <label for="priceto">до</label>
-               <input type="number" name="priceto" id="priceto" class="form-control">
+               <input type="number" value="{{$res->priceto}}" name="priceto" id="priceto" class="form-control">
             </div>
             </div>
             <label for="capacity">Вместимость (пассажиры)</label>
             <div class="row">
             <div class="form-group col-md-5">
                <label for="paxfrom">от</label>
-               <input type="number" name="paxfrom" id="paxfrom" class="form-control">
+               <input type="number" value="{{$res->paxfrom}}" name="paxfrom" id="paxfrom" class="form-control">
             </div>
             <div class="form-group col-md-5">
                <label for="paxto">до</label>
-               <input type="number" name="paxto" id="paxto" class="form-control">
+               <input type="number"  value="{{$res->paxto}}" name="paxto" id="paxto" class="form-control">
             </div>
             </div>
             <div class="form-group">
                <label for="fuselage">Фюзеляж</label>
                   <select name="fuselage" id="fuselage" class="form-control">
                      <option value="any">Любой</option>
-                     <option value="narrow">Узкий</option>
-                     <option value="wide">Широкий</option>
+                     <option value="narrow" {{ $res->fuselage == 'narrow' ? 'selected' : '' }}>Узкий</option>
+                     <option value="wide" {{ $res->fuselage == 'wide' ? 'selected' : '' }}>Широкий</option>
                   </select>
             </div>
             <div class="form-group">
                <label for="minrange">Дальность в км (минимальная)</label>
-               <input type="number" name="minrange" id="minrange" class="form-control">
+               <input type="number" value="{{$res->minrange}}" name="minrange" id="minrange" class="form-control">
             </div>
 
             <div class="row">
@@ -115,15 +115,28 @@ $is = 0;
             </div>
 
             <div class="col-md-4">
-            <button type="submit">
-            <input type="reset" value="Сбросить" class="btn-danger">
-            </button><br/><br/>
-            </div>
 
+            <input type="reset" value="Сбросить" class="btn-danger">
+
+            </div>
             <br/><br/>
             </div>
             </div>
          </form>
+         <div class="filter">
+         <form action="{{ route('filter') }}" method="post" class="form-success">
+           @csrf
+            <input style="display:none;" type="text" name="name" id="name" class="form-control">
+            <input style="display:none;" value="any" name="manufacture" id="manufacture" class="form-control">
+            <input style="display:none;" type="number" name="pricefrom" id="pricefrom" class="form-control">
+            <input style="display:none;" type="number" name="priceto" id="priceto" class="form-control">
+            <input style="display:none;" type="number" name="paxfrom" id="paxfrom" class="form-control">
+            <input style="display:none;" type="number" name="paxto" id="paxto" class="form-control">
+            <input style="display:none;" value="any" name="fuselage" id="fuselage" class="form-control">
+            <input style="display:none;" type="number" name="minrange" id="minrange" class="form-control">
+            <button type="submit" class="btn-danger">Отменить фильтры</button><br/><br/>
+         </form>
+         </div>
 </div>
 </div>
 </div>

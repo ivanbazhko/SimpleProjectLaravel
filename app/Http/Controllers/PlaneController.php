@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PlaneRequest;
 use App\Plane;
+use App\Comment;
 
 class PlaneController extends Controller
 {
@@ -82,12 +83,15 @@ class PlaneController extends Controller
         $planes = Plane::paginate(5);
         }
 
-        return view('store', ['dataPlanes' => $planes]);
+        return view('store', ['dataPlanes' => $planes], ['res' => $req]);
     }
 
     public function onlyOne($id) {
         $plane = Plane::findOrFail($id);
-        return view('onlyOne', ['th' => $plane]);
+        $comments = Comment::query();
+        $comments = $comments->Plane($id);
+        $comments = $comments->get();
+        return view('onlyOne', ['th' => $plane], ['com' => $comments]);
     }
 
     public function update($id) {

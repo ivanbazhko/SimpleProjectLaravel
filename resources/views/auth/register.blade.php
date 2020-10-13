@@ -37,7 +37,7 @@
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>Введите верный адрес</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -51,7 +51,7 @@
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>Длина пароля должна быть не меньше 8 символов</strong>
                                     </span>
                                 @enderror
                             </div>

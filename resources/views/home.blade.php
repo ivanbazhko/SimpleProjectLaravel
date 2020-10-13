@@ -5,7 +5,6 @@
 @endsection
 
 @section('contents')
-@include('messages')
 <br/>
 <div class="row">
    <div class="col-md-2">
@@ -24,6 +23,18 @@
            class="sr-only">(current)</span></a>
        </button>
    </div>
+   @if (Auth::user())
+   <div class="col-md-1">
+   </div>
+   <div class="col-md-3">
+   <form action="{{ route('userOrder') }}" method="post">
+            @csrf
+            <input style="display:none;" name="email" id="email" value="{{Auth::user()->email}}" class="form-control">
+            <button type="submit" class="btn-info">Ваши заказы</button>
+            </button>
+   </form>  
+   </div>
+   @endif
 </div> 
 <br/>
 @yield('forauth')  
