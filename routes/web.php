@@ -27,7 +27,7 @@ Route::get('/toreg', function () {
 
 Route::post('/admin/submit', 'PlaneController@adding')->name('adding');
 
-Route::post('/filter/submit', 'PlaneController@filteredPlanes')->name('filter');
+Route::get('/store/submit', 'PlaneController@filteredPlanes')->name('filter');
 
 Route::post('/contact/submit', 'ContactController@message')->name('message');
 
@@ -36,9 +36,7 @@ Route::get('/', 'HomeController@index')->name('homedirect');
 Route::get('/admin', 'ContactController@receive')->
 name('admin')->middleware('auth')->middleware('admin');
 
-Route::get('/store', 'PlaneController@filteredPlanes', function () {
-    return view('store');
-})->name('store');
+Route::get('/store', 'PlaneController@filteredPlanes')->name('store');
 
 Route::get('/onlyOne/{id}', 'PlaneController@onlyOne')->name('onlyOne');
 
@@ -75,7 +73,7 @@ Route::post('/cart/submit', 'OrderController@addAnOrder')->name('addAnOrder');
 Route::get('/ordersAdmin', 'OrderController@getAllOrders')->
 name('adminOrder')->middleware('auth')->middleware('admin');
 
-Route::post('/ordersUser/submit', 'OrderController@userOrders')->
+Route::get('/ordersUser/submit', 'OrderController@userOrders')->
 name('userOrder')->middleware('auth');
 
 Route::post('/deleteOrder/submit', 'OrderController@deleteOrder')->name('deleteOrder');
@@ -84,4 +82,4 @@ Route::post('/updateAnOrder/submit', 'OrderController@updateAnOrder')->name('upd
 
 Route::post('/comment/submit', 'CommentController@comment')->name('comment');
 
-Route::post('/deleteComment/submit', 'CommentController@deleteComment')->name('deleteComment');
+Route::post('/deleteComment/submit', 'CommentController@deleteComment')->name('deleteComment')->middleware('admin');

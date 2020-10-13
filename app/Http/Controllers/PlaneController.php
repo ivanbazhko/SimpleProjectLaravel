@@ -33,6 +33,7 @@ class PlaneController extends Controller
         $planes = Plane::query();
 
         $having = false;
+
         if($req->filled('name')){
             $having = true;
             $planes = $planes->Name($req->input('name'));

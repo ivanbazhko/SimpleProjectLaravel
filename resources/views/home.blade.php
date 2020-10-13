@@ -27,7 +27,7 @@
    <div class="col-md-1">
    </div>
    <div class="col-md-3">
-   <form action="{{ route('userOrder') }}" method="post">
+   <form action="{{ route('userOrder') }}" method="get">
             @csrf
             <input style="display:none;" name="email" id="email" value="{{Auth::user()->email}}" class="form-control">
             <button type="submit" class="btn-info">Ваши заказы</button>

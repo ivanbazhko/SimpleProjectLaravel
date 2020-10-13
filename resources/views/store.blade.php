@@ -53,7 +53,7 @@ $is = 0;
 <a href="{{ route('cartAndBuy') }}" style="color:white; font-size:20px; background:red">Корзина и оформление покупки</a>
 <div class="filter">
    <h4>Добавить фильтры</h4>
-   <form action="{{ route('filter') }}" method="post" class="form-success">
+   <form action="{{ route('filter') }}" method="get" class="form-success">
            @csrf
            <div class="form-group">
                <label for="name">Название</label>
@@ -124,7 +124,7 @@ $is = 0;
             </div>
          </form>
          <div class="filter">
-         <form action="{{ route('filter') }}" method="post" class="form-success">
+         <form action="{{ route('filter') }}" method="get" class="form-success">
            @csrf
             <input style="display:none;" type="text" name="name" id="name" class="form-control">
             <input style="display:none;" value="any" name="manufacture" id="manufacture" class="form-control">
