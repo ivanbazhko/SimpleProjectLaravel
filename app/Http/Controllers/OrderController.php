@@ -23,7 +23,7 @@ class OrderController extends Controller
 
         \ShoppingCart::clean();
 
-        return redirect()->route('home')->with('success', 'Заказ размещён');
+        return redirect()->route('store')->with('success', 'Заказ размещён');
     }
 
     public function getAllOrders(){
